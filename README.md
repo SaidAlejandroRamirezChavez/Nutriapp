@@ -3,10 +3,12 @@
 ***participantes*** 
 
    -Said Alejandro Ramirez Chavez
+   
 <img width="200" height="196" alt="yo" src="https://github.com/user-attachments/assets/a7b065ae-81a1-4ea3-8a6e-bb2d9d4ed3fa" />
 
 
    -Dylan Kareem Almanza Garcia
+   
 <img width="200" height="202" alt="dylan" src="https://github.com/user-attachments/assets/78bfa0ee-13c5-40d1-8857-b4c537a8600c" />
 
 
