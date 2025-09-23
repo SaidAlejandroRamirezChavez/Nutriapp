@@ -13,3 +13,7 @@
 
 
 # progreso:
+
+ **investigacion**
+
+   como parte de la investigacion de las apis nutricionales, nos dimos a la tarea de investigar 3 apis diferentes y comprender como se usan y como funcionan       las mismas, primero nos dimos a la tarea de investigar la primera api y dimos con ***CaloreKing*** que es una herramienta para acceder y comparar               información nutricional de alimentos como calorías, carbohidratos, grasas y proteínas, usando una base de datos que contiene **mas de 100,000** alimentos lo    que ayuda a las personas a mantener un control sobre su alimentacion
