@@ -40,11 +40,11 @@
                 <div class="row">
                     <div class="col">
                         <label for="nombre" class="form-label">edad:</label>
-                        <input type="number" class="form-control" id="comtraseña" name="contraseña" required>
+                        <input type="number" class="form-control" id="edad" name="edad" required>
                     </div>
                     <div class="col">
                         <label for="apelldos" class="form-label">altura:</label>
-                        <input type="number" class="form-control" id="confirmar" name="confirmar" required>
+                        <input type="number" class="form-control" id="altura" name="altura" required>
                     </div>
                     <div class="col">
                         <label for="nombre" class="form-label">peso:</label>
@@ -52,7 +52,61 @@
                     </div>
                     <div class="col">
                         <label for="apelldos" class="form-label">nivel de actividad:</label>
-                        <input type="number" class="form-control" id="confirmar" name="confirmar" required>
+                        <select type="number" class="form-control" id="actividad" name="actividad" required>
+                            <option value="1">1-Sedentario</option>
+                            <option value="2">2-Ligeramente activo</option>
+                            <option value="3">3-Moderadamente activo</option>
+                            <option value="4">4-Muy activo</option>
+                            <option value="5">5-Extremadamente activo</option>
+                        </select>  
+                    </div>
+                </div>
+
+                <div class="row container p-2">
+                    <div class="col">
+                        <label for="">Cual es tu objetivo principal?</label>
+                        <select type="number" class="form-control" id="objetivo" name="objetivo" required>
+                            <option value="1">Perder peso</option>
+                            <option value="2">Mantener peso</option>
+                            <option value="3">Ganar masa muscular</option>
+                            <option value="4">controlar una condicion</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div class="row container p-2">
+                        <h3 class="text-center">preferencias alimenticias:</h3>
+                            <div class="col">
+                                <label for="">alergias:</label>
+                                <select type="number" class="form-control" name="alergia" id="alergia">
+                                    <option value="">ninguna</option>
+                                    <option value="">manie</option>
+                                    <option value="">mariscos</option>
+                                    <option value="">soya</option>
+                                    <option value="">trigo</option>
+                                    <option value="">otra</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="">alimentacion:</label>
+                                <select type="number" class="form-control" name="dieta" id="dieta">
+                                    <option value="">ninguna</option>
+                                    <option value="">vegetariano</option>
+                                    <option value="">vegano</option>
+                                    <option value="">cetogenica</option>
+                                    <option value="">otra</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="">intolerancias:</label>
+                                <select type="number" class="form-control" name="intolerancia" id="intolerancia">
+                                    <option value="">ninguna</option>
+                                    <option value="">lactosa</option>
+                                    <option value="">gluten</option>
+                                    <option value="">frutos secos</option>
+                                    <option value="">otra</option>
+                                </select>
+                            </div>
                     </div>
                 </div>
 
