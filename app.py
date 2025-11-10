@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
+app.secret_key = "cambiar_por_una_clave_secreta_en_produccion"
 
 @app.route("/")
 def index():
@@ -8,22 +9,57 @@ def index():
 
 @app.route("/verificacion", methods=["GET", "POST"])
 def verificacion():
-    # Leer correctamente los valores enviados por el formulario
     contraseña = request.form.get("contraseña")
     confirmar = request.form.get("confirmar")
+    edad = request.form.get("edad")
+    nombre = request.form.get("nombre")
+    apellidos = request.form.get("apellidos")
+    altura = request.form.get("altura")
+    peso = request.form.get("peso")
+    actividad = request.form.get("actividad")
+    objetivo = request.form.get("objetivo")
+    alergias = request.form.get("alergias")
+    alimentacion = request.form.get("alimentacion")
+    intolerancias = request.form.get("intolerancias")
+
+
 
     if contraseña != confirmar:
         error_message = "Las contraseñas no coinciden. Por favor, inténtalo de nuevo."
         return render_template("Registro.html", error=error_message)
     else:
-        # Redirigir al endpoint /inicio después de un registro/verificación exitosa
-        return redirect(url_for('inicio'))
+        session['nombre'] = nombre
+        session['apellidos'] = apellidos
+        session['edad'] = edad
+        session['altura'] = altura
+        session['peso'] = peso
+        session['actividad'] = actividad
+        session['objetivo'] = objetivo
+        session['alergias'] = alergias
+        session['alimentacion'] = alimentacion
+        session['intolerancias'] = intolerancias
+
+        return redirect(url_for('perfil'))
 
 
 
-@app.route("/inicio")
-def inicio():
-    return render_template("inicio.html")  
+@app.route("/perfil" , methods=["GET", "POST"])
+def perfil():
+    nombre = session.get('nombre')
+    apellidos = session.get('apellidos')
+    edad = session.get('edad')
+    altura = session.get('altura')
+    peso = session.get('peso')
+    actividad = session.get('actividad')
+    objetivo = session.get('objetivo')
+    alergias = session.get('alergias')
+    alimentacion = session.get('alimentacion')
+    intolerancias = session.get('intolerancias')
+
+    return render_template("perfil.html", nombre=nombre, apellidos=apellidos,
+                           edad=edad, altura=altura, peso=peso, actividad=actividad,
+                           objetivo=objetivo, alergias=alergias,
+                           alimentacion=alimentacion, intolerancias=intolerancias)
 
 
 if __name__ == "__main__":

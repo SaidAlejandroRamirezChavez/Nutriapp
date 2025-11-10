@@ -2,9 +2,12 @@
 
 {% block contenido  %}
 
-<div>
-    <h2>Pefil de Usuario</h2>
-    <p>Bienvenido {{ Nombre }} {{ apelldos }}. Aquí puedes ver tu información personal.</p>
+<div class="container p-2 ">
+
+    <h2>Perfil de Usuario</h2>
+    <p>Bienvenido {{ nombre }} {{ apellidos }}. Aquí puedes ver tu información personal.</p>
+
+    <p>Hola, me llamo {{ nombre }} {{ apellidos }}, tengo {{ edad }} años, mido {{ altura }} centimetros, peso {{ peso }} kg, mi objetivo es: {{ objetivo }}. Tengo alergia a: {{ alergias }}. Mi tipo de alimentación: {{ alimentacion }}. Intolerancias: {{ intolerancias }}.</p>
 
 </div>
 
