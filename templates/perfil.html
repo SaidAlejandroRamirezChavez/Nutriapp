@@ -1,14 +1,92 @@
 {% extends "base.html" %}
 
-{% block contenido  %}
+{% block contenido %}
 
-<div class="container p-2 ">
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2 class="mb-4">Perfil de Usuario</h2>
+            <p class="lead">Bienvenido {{ nombre }} {{ apellidos }}. Aquí puedes ver tu información personal.</p>
 
-    <h2>Perfil de Usuario</h2>
-    <p>Bienvenido {{ nombre }} {{ apellidos }}. Aquí puedes ver tu información personal.</p>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Información Personal</h5>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Nombre:</strong>
+                            <p>{{ nombre }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Apellidos:</strong>
+                            <p>{{ apellidos }}</p>
+                        </div>
+                    </div>
 
-    <p>Hola, me llamo {{ nombre }} {{ apellidos }}, tengo {{ edad }} años, mido {{ altura }} centimetros, peso {{ peso }} kg, mi objetivo es: {{ objetivo }}. Tengo alergia a: {{ alergias }}. Mi tipo de alimentación: {{ alimentacion }}. Intolerancias: {{ intolerancias }}.</p>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <strong>Edad:</strong>
+                            <p>{{ edad }} años</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Altura:</strong>
+                            <p>{{ altura }} cm</p>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Peso:</strong>
+                            <p>{{ peso }} kg</p>
+                        </div>
+                    </div>
 
+                    <hr>
+
+                    <h5 class="card-title mb-4">Información de Salud</h5>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Objetivo:</strong>
+                            <p>{{ objetivo }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Actividad:</strong>
+                            <p>{{ actividad }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Alergias:</strong>
+                            <p>{{ alergias if alergias else "No registrado" }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Intolerancias:</strong>
+                            <p>{{ intolerancias if intolerancias else "No registrado" }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <strong>Tipo de Alimentación:</strong>
+                            <p>{{ alimentacion }}</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="alert alert-info mt-4">
+                        <p class="mb-0">
+                            <strong>Resumen:</strong> Hola, me llamo <strong>{{ nombre }} {{ apellidos }}</strong>, tengo <strong>{{ edad }}</strong> años, mido <strong>{{ altura }}</strong> centímetros, peso <strong>{{ peso }}</strong> kg, mi objetivo es: <strong>{{ objetivo }}</strong>. Tengo alergia a: <strong>{{ alergias if alergias else "ninguna" }}</strong>. Mi tipo de alimentación: <strong>{{ alimentacion }}</strong>. Intolerancias: <strong>{{ intolerancias if intolerancias else "ninguna" }}</strong>.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
