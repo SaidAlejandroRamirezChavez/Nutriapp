@@ -1,5 +1,8 @@
 # Nutriapp
 
+<img width="413" height="413" alt="image" src="https://github.com/user-attachments/assets/04fe5ef5-ed12-4fd3-a798-30f07743fe8a" />
+
+
 ***Desarrolladores*** 
 
    -Said Alejandro Ramirez Chavez 3-D
