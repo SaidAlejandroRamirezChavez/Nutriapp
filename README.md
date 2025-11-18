@@ -1,6 +1,6 @@
 # Nutriapp
 
-***desarrolladores*** 
+***Desarrolladores*** 
 
    -Said Alejandro Ramirez Chavez 3-D
    
@@ -12,8 +12,8 @@
 <img width="200" height="202" alt="dylan" src="https://github.com/user-attachments/assets/78bfa0ee-13c5-40d1-8857-b4c537a8600c" />
 
 
-## propocito:
-  el propocito de la actividad es desarrollar una pagina que hable hacerca de una pequeña variedad de apis nutricionales con el propocito de informar hacerca     de estas herramientas son importantes ya que nos ayudan a tener un balance en nuestra alimentacion, mostrar la cantidad de calorias que consumimos y puede      llegar a desarrollar dietas personalisadas para cada persona
+## Proposito:
+  el proposito de la actividad es desarrollar una pagina que hable acerca de una pequeña variedad de apis nutricionales con el propocito de informar acerca     de estas herramientas son importantes ya que nos ayudan a tener un balance en nuestra alimentacion, mostrar la cantidad de calorias que consumimos y puede      llegar a desarrollar dietas personalizadas para cada persona
 
 
 ## progreso:
@@ -28,10 +28,10 @@ Como parte de la investigación sobre las APIs nutricionales, nos dimos a la tar
 Durante nuestra búsqueda, también encontramos otra herramienta llamada Edamam. Esta API está pensada para integrarse en aplicaciones y sitios web, ofreciendo información nutricional detallada, datos de recetas y apoyo en la planificación de comidas. Para lograrlo, utiliza una amplia base de datos que reúne gran variedad de alimentos. Además, resulta especialmente práctica en la planificación de dietas y en la organización de recetas, ya que permite medir de manera sencilla las calorías, proteínas y otros nutrientes que consumimos.
 
 #### **Spoonacular**
-y por ultimo encontramos una ultima API api con el nombre de Spoonacular esta api sirve mucho para integrar funciones de comida y nutrición en aplicaciones, proporcionando acceso a bases de datos de recetas, información nutricional de ingredientes, análisis de dietas, planificación automática de menús y análisis de imágenes de alimentos, usualmente los programadores la utilisan para potenciar sus sitios 
+Y por ultimo encontramos una ultima API api con el nombre de Spoonacular esta api sirve mucho para integrar funciones de comida y nutrición en aplicaciones, proporcionando acceso a bases de datos de recetas, información nutricional de ingredientes, análisis de dietas, planificación automática de menús y análisis de imágenes de alimentos, usualmente los programadores la utilisan para potenciar sus sitios 
 
 
-#### **prosedimientos**
+#### **Procedimientos**
 
-actualemtne nos encontramos en fase de planificacion pero dentro de poco tendremos bien planeado nuestro sitio web y agregaremos pociblidades e implementaciones al proyecto.
+actualmente nos encontramos en fase de planificacion pero dentro de poco tendremos bien planeado nuestro sitio web y agregaremos pociblidades e implementaciones al proyecto.
 
