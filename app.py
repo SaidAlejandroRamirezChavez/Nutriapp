@@ -5,6 +5,10 @@ app.secret_key = "cambiar_por_una_clave_secreta_en_produccion"
 
 @app.route("/")
 def index():
+    return render_template("inicio.html")
+
+@app.route("/registro")
+def registro():
     return render_template("Registro.html")
 
 @app.route("/verificacion", methods=["GET", "POST"])
@@ -61,6 +65,9 @@ def perfil():
                            objetivo=objetivo, alergias=alergias,
                            alimentacion=alimentacion, intolerancias=intolerancias)
 
+@app.route("/educacion")
+def Educacion():    
+    return render_template("Educacion.html")
 
 if __name__ == "__main__":
     app.run(debug = True)
