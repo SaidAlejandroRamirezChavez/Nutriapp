@@ -1,4 +1,5 @@
 #Módulo de Educación e Información
+
 ¿Cómo leer las etiquetas nutricionales?
 Para leer correctamente las etiquetas nutricionales necesitamos una habilidad para poder tomar decisiones ante los alimentos que consumimos, es decir, fijarnos más en cuantas calorias tiene, cuanto % de grasa tiene, en resumen, que sean productos, comida, platillos más saludables y comparar productos entre sí para ver cual es mas economica y cual es mejor en cuanto beneficios, aunque algunas veces su diseño ya que generan confusiones.
 **Qué significa cada parte de las etiquetas : Porciones, calorías, grasas, azúcares y sodio.´**
