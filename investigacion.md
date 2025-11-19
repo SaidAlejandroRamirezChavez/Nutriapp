@@ -24,10 +24,17 @@ Ambos elementos son esenciales para una alimentación saludable y fundamentales 
 
 ## Banco de Recetas Saludables:
 El Banco de Recetas Saludables es una estrategia en México que busca promover hábitos saludables entre los niños y niñas a través de recetas y actividades culinarias, este banco puede incluir una variedad de recetas que fomentan una alimentación equilibrada, utilizando ingredientes frescos y saludables, como frutas, verduras, y proteínas, además, se enfoca en la cocina familiar, permitiendo a los niños aprender a cocinar y disfrutar de la experiencia culinaria.
+
 Filtros por preparacion
+
 Tiempo de preparación: Filtra recetas por la cantidad de tiempo que toman en prepararse.
+
 Dificultad: Puedes elegir recetas de diferentes niveles de dificultad, desde fáciles hasta difíciles.
+
 Tipo de dieta: Filtra por recetas veganas, sin gluten, o adaptadas a otras dietas específicas.
+
 Ingredientes principales: Busca recetas que incluyan ingredientes específicos que desees en tu dieta.
+
 Calorías por porción: Filtra por el contenido calórico de cada porción para mantener un control nutricional.
+
 Estos filtros te ayudarán a encontrar recetas que se ajusten a tus necesidades dietéticas y de tiempo
