@@ -3,11 +3,11 @@
 {% block contenido  %}
 
 <h1>Educacion e informacion importante para la nutricion:</h1>
-<DIV class="row container p-3">
-    <div class="card mb-3" style="max-width: 540px;">
+<div class="row container p-3 bg-info text-center">
+    <div class="card col-4" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src="{{ url_for('static', filename='hamster.gif') }}" class="img-fluid rounded-start" alt="hamster con dedo pulgar levantado">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -17,10 +17,10 @@
     </div>
   </div>
 </div>
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card col-4" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="" class="img-fluid rounded-start" alt="...">
+      <img src="{{ url_for('static', filename='candy hamster.jpg') }}" class="img-fluid rounded-start" alt="hamster rodeado de dulces">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -30,6 +30,131 @@
     </div>
   </div>
 </div>
-</DIV> 
+<div class="card" style="width: 18rem;">
+  <img src="{{ url_for('static', filename='inteligente.jpg') }}" class="img-fluid rounded-start" alt="hamster intelectual">
+  <div class="card-body">
+    <h5 class="card-title">links</h5>
+    <p class="card-text">un poco de informacion importante que podria ayudarte a mejorar tu comprencion de las etiquetas</p>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      links 
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="https://www.gob.mx/cms/uploads/attachment/file/55012/ManualEtiquetado_VF.pdf" target="_blank">Qué significa cada parte de las etiquetas </a></li>
+      <li><a class="dropdown-item" href="https://martinolivieri.com/alimentos-y-enfermedades/el-secreto-oculto-en-las-etiquetas-ingredientes-no-saludables-y-como-identificarlos" target="_blank">Cómo identificar los ingredientes que algunas veces ocultan </a></li>
+    </ul>
+  </div>
+  </div>
+</div>
+
+</div > 
+
+<div class="row container bg-secondary p-4 text-center">
+ <h3>Mitos y verdades de dietas de moda</h3>
+  <div class="row">
+    <p>existe una gran variedad de dietas famosas y conocidas en el internet, un buen ejemplo seria el ayuno intermitente, dependiendo de el objetivo que tengas una dieta u otra te podria beneficiar mas o menos, a continuacion tomaremos algunas de las mas famosas y exolicaremos sus ventajas y desventajas</p>
+
+      <div class="card-group">
+        <div class="card">
+          <img src="{{ url_for('static', filename='ayuno.jpg') }}" class="img-fluid rounded-start" alt="imagen de ayuno intermitente">
+          <div class="card-body">
+            <h5 class="card-title">ayuno intermitente</h5>
+            <p class="card-text">El ayuno intermitente es un patrón de alimentación que alterna períodos de ayuno con períodos de ingesta de alimentos</p>
+            <a href="https://www.mayoclinic.org/es/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/intermittent-fasting/faq-20441303" class="btn btn-primary" target="_blank">ayuno</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{{ url_for('static', filename='Cetogenica.jpg') }}" class="img-fluid rounded-start" alt="alimentos especiales en carboidratos y proteinas">
+          <div class="card-body">
+            <h5 class="card-title">Dieta cetogénica</h5>
+            <p class="card-text">la dieta cetogénica se enfoca en grasas para la pérdida de peso rápida, pero puede ser restrictiva.</p>
+            <a href="https://www.ilae.org/patient-care/dieta-cetog-nica/conceptos-b-sicos" class="btn btn-primary" target="_blank">cetogenica</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{{ url_for('static', filename='vegeta.jpg') }}" class="img-fluid rounded-start" alt="alimenots puramente vegetales">
+          <div class="card-body">
+            <h5 class="card-title">Dieta vegetariana</h5>
+            <p class="card-text">La dieta vegetariana elimina la carne pero requiere una buena planificación para asegurar todos los nutrientes necesarios. </p>
+            <a href="https://medlineplus.gov/spanish/ency/article/002465.htm" class="btn btn-primary" target="_blank">vegetariana</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row container bg-info p-4 text-center ">
+  <h1 class=" p-4">Guías sobre macronutrientes y su función.</h1>
+  <div class="col ">
+    <p>Los macronutrientes son nutrientes que nuestro cuerpo necesita en cantidades grandes, que son esenciales para un buen desarrollo del cuerpo y necesarios para un crecimiento, y para el mantenimiento del cuerpo. Estas se podrían dividir en tres grupos un tanto grandes que serían; Carbohidratos, proteínas y grasas. En cada grupo se cumplen funciones específicas en los organismos, como la producción continua de energía, la construcción y reparación de los tejidos humanos y la absorción de vitaminas y minerales. Estas son importantes para equilibrar la ingesta de estos macronutrientes para una buena salud y rendimiento en actividades diarias</p>
+  </div>
+  <div class="col">
+    <div>
+          <img src="{{ url_for('static', filename='vegeta.jpg') }}" class="img-fluid rounded-start" alt="alimenots puramente vegetales">
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Carbohidratos</h5>
+        <p class="card-text">Los carbohidratos son la energía principal del cuerpo y alimentan al cerebro y los músculos. Vienen en pan, tortillas, frutas, arroz y avena.</p>
+        <a href="https://yuka.io/es/fundamentos/carbohidratos" class="btn btn-primary" target="_blank">saber mas...</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">proteinas</h5>
+        <p class="card-text">Las proteínas son los materiales que el cuerpo usa para construir y reparar músculos, órganos y tejidos. También crean hormonas y enzimas. Están en carne, huevo, frijoles y lácteos.</p>
+        <a href="https://medlineplus.gov/spanish/genetica/entender/comofuncionangenes/proteina" class="btn btn-primary" target="_blank">saber mas...</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">grasas</h5>
+        <p class="card-text">Las grasas sirven como energía de reserva, ayudan a absorber vitaminas y participan en la producción de hormonas y en el funcionamiento del cerebro. Se encuentran en aguacate, nueces, aceites y pescado.</p>
+        <a href="https://medlineplus.gov/spanish/ency/patientinstructions/000104.htm" class="btn btn-primary" target="_blank">saber mas...</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row container bg-secondary p-4 text-center ">
+  <h1> La importancia de la hidratación, la fibra.</h1>
+  <div>
+  <div class="card">
+  <div class="card-header">
+    <strong>hidratacion</strong>
+  </div>
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <p>La hidratación es fundamental, esencial para el funcionamiento óptimo del cuerpo y la mente, ya que necesitamos agua, ya que es aproximadamente el 60% del peso corporal en adultos y participa la hidratación en procesos vitales como la regulación de la temperatura en el cuerpo, la digestión y la eliminación de algunas toxinas. La deshidratación podría provocar fatiga, mareos e incluso en algunos casos golpes de calor</p>
+      </blockquote>
+    </figure>
+  </div>
+</div>
+  </div>
+
+  <div class="card">
+  <div class="card-header">
+    <strong>fibras</strong>  
+  </div>
+    <div class="card-body">
+      <figure>
+        <blockquote class="blockquote">
+          <p>Hay distintos tipos de fibra pero la que hablaré será de fibra dietética, esta es fundamental para la salud digestiva, metabólica e inmunológica, la fibra no se puede digerir ni se absorbe en el intestino, más específicamente en el intestino delgado, pero puede ser fermentada parcialmente por las bacterias del colon, acerca de la fibra se recomienda consumir entre 25 y 30 gramos de fibra diariamente, junto a 2 litros de agua diario.</p>
+        </blockquote>
+      </figure>
+    </div>
+    </div>
+</div>
+</div>
+
 
 {% endblock %}
