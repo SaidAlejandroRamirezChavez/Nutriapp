@@ -19,3 +19,5 @@ La hidratación es fundamental, esencial para el funcionamiento óptimo del cuer
 Hay distintos tipos de fibra pero la que hablaré será de fibra dietética, esta es fundamental para la salud digestiva, metabólica e inmunológica, la fibra no se puede digerir ni se absorbe en el intestino, más específicamente en el intestino delgado, pero puede ser fermentada parcialmente por las bacterias del colon, acerca de la fibra se recomienda consumir entre 25 y 30 gramos de fibra diariamente, junto a 2 litros de agua diario.
 
 Ambos elementos son esenciales para una alimentación saludable y fundamentales para el funcionamiento del organismo y prevención de algunas enfermedades.
+
+## Módulo de Planificación y Recetas
