@@ -69,5 +69,23 @@ def perfil():
 def Educacion():    
     return render_template("Educacion.html")
 
+@app.route("/herramientas", methods=["GET", "POST"]) 
+def Herramientas():   
+    return render_template("Herramientas.html") 
+
+@app.route("/resultados", methods=["GET", "POST"])
+def Resultados():
+    if request.method == "POST":
+        try:
+            peso = float(request.form.get("kgIMC"))
+            estatura = float(request.form.get("mIMC"))
+            imc = peso / (estatura ** 2)
+            imc = round(imc, 2)
+            return render_template("RESULTADOS.html", imc=imc)
+        except (TypeError, ValueError):
+            error_message = "Por favor, ingresa valores numéricos válidos para peso y estatura."
+            return render_template("Herramientas.html", error=error_message)
+    return redirect(url_for("Herramientas"))
+
 if __name__ == "__main__":
     app.run(debug = True)

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block contenido  %}
+
+
+<div class=" bg-secondary text-center container">
+    <H1>Calculadoras y herramientas</H1>
+    <p>Bien venido a la seccion de herramientas, aqui podras calcular diversas cantidades importantes para su salud.</p>
+
+</div>
+<div class="row text-center  bg-info">
+    <div class=" col-4 container  bg-secondary">
+        <div class="overflow-y-scroll"><strong>Que es el IMC?:</strong> <br> El IMC, o Índice de Masa Corporal, es una medida que relaciona el peso de una persona con su estatura Sirve como una herramienta de detección para clasificar a las personas en categorías como bajo peso, peso saludable, sobrepeso u obesidad, y así evaluar el riesgo asociado con problemas de salud</div>
+    </div>
+    <div class="col-md-8 text-center">
+        <div class="card text-center">
+            <div class="card-header">
+                calculadora IMC: (kg/m²). 
+            </div>
+            <form method="POST" action="{{ url_for('Resultados') }}">
+                <div class="mb-3">
+                    <label for="kgIMC" class="form-label">peso(kg)</label>
+                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mIMC" class="form-label">estatura(m)</label>
+                    <input type="number" class="form-control" id="mIMC" name="mIMC" step="any" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
