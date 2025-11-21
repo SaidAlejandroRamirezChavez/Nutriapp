@@ -41,7 +41,7 @@ Estos filtros te ayudarán a encontrar recetas que se ajusten a tus necesidades 
 
 # Módulo de Herramientas
 
-** Calculadora de Índice de Masa Corporal (IMC) **
+**Calculadora de Índice de Masa Corporal (IMC)**
 
 Fórmula
 IMC=peso(kg)​
@@ -57,7 +57,7 @@ IMC=peso(kg)​
 
 ≥ 30 → Obesidad
 
-** Calculadora de Tasa Metabólica Basal (TMB) **
+**Calculadora de Tasa Metabólica Basal (TMB)**
 
 Formula
 
@@ -69,7 +69,7 @@ Mujeres
 
 TMB=10(pesokg)+6.25(estaturacm)−5(edad)−161
 
-** Calculadora de Gasto Calórico Total (GCT) **
+**Calculadora de Gasto Calórico Total (GCT)**
 
 Formula
 
@@ -87,7 +87,7 @@ Intenso: 1.725
 
 Muy intenso: 1.9
 
-** Calculadora de Peso Corporal Ideal **
+**Calculadora de Peso Corporal Ideal**
 
 Formula
 
@@ -99,7 +99,7 @@ Mujeres
 
 45.5+0.9×(alturacm−152)
 
-** Calculadora de Macronutrientes **
+**Calculadora de Macronutrientes**
 
 Este esta basado en su objetivo, ya sea; Pérdida de peso, mantenimiento o ganancia muscular. Aqui le presento un reparto sugerido de estos;
 Reparto sugerido
