@@ -38,3 +38,84 @@ Ingredientes principales: Busca recetas que incluyan ingredientes específicos q
 Calorías por porción: Filtra por el contenido calórico de cada porción para mantener un control nutricional.
 
 Estos filtros te ayudarán a encontrar recetas que se ajusten a tus necesidades dietéticas y de tiempo
+
+# Módulo de Herramientas
+
+** Calculadora de Índice de Masa Corporal (IMC) **
+
+Fórmula
+IMC=peso(kg)​
+    --------
+    estatura2 (m)
+    Interpretación (OMS)
+
+< 18.5 → Bajo peso
+
+18.5–24.9 → Normal
+
+25–29.9 → Sobrepeso
+
+≥ 30 → Obesidad
+
+** Calculadora de Tasa Metabólica Basal (TMB) **
+
+Formula
+
+Hombres
+
+TMB=10(pesokg)+6.25(estaturacm)−5(edad)+5
+
+Mujeres
+
+TMB=10(pesokg)+6.25(estaturacm)−5(edad)−161
+
+** Calculadora de Gasto Calórico Total (GCT) **
+
+Formula
+
+Se multiplica la TMB por el factor de actividad.
+
+Factores de actividad
+
+Sedentario: 1.2
+
+Ligero: 1.375
+
+Moderado: 1.55
+
+Intenso: 1.725
+
+Muy intenso: 1.9
+
+** Calculadora de Peso Corporal Ideal **
+
+Formula
+
+Hombre
+
+50+0.9×(alturacm−152)
+
+Mujeres
+
+45.5+0.9×(alturacm−152)
+
+** Calculadora de Macronutrientes **
+
+Este esta basado en su objetivo, ya sea; Pérdida de peso, mantenimiento o ganancia muscular. Aqui le presento un reparto sugerido de estos;
+Reparto sugerido
+
+Pérdida de peso: 40% proteínas, 30% carbohidratos, 30% grasas
+
+Mantenimiento: 25% proteínas, 50% carbohidratos, 25% grasas
+
+Ganancia muscular: 30% proteínas, 45% carbohidratos, 25% grasas
+
+Un ejemplo podria ser
+Requerimiento: 2200 kcal
+Objetivo: Ganancia muscular → 30/45/25
+
+Proteína: 2200 × 0.30 / 4 = 165 g
+
+Carbohidratos: 2200 × 0.45 / 4 = 247 g
+
+Grasas: 2200 × 0.25 / 9 = 61 g
