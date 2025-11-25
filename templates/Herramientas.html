@@ -61,7 +61,7 @@
 
 <div class="row text-center  bg-secondary">
     <div class=" col-4 container  bg-info">
-        <div class="overflow-y-scroll"><strong>Que es el TBM?:</strong> <br> El TBM, o Índice de Masa Corporal, es una medida que relaciona el peso de una persona con su estatura Sirve como una herramienta de detección para clasificar a las personas en categorías como bajo peso, peso saludable, sobrepeso u obesidad, y así evaluar el riesgo asociado con problemas de salud</div>
+        <div class="overflow-y-scroll"><strong>Que es el TBM?:</strong> <br> El TMB significa Tasa Metabólica Basal, que es la cantidad mínima de energía (calorías) que tu cuerpo necesita para mantener sus funciones vitales en reposo, como respirar, hacer circular la sangre y mantener la temperatura corporal. Representa alrededor del 60% al 70% de la energía que gastas diariamente y varía de persona a persona según factores como la masa muscular, la edad y el sexo. </div>
     </div>
     <div class="col-md-8 text-center">
         <div class="card text-center">
@@ -79,18 +79,42 @@
                 </div>
                 <div class="mb-3">
                     <label for="kgIMC" class="form-label">peso(kg)</label>
-                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" required>
+                    <input type="number" class="form-control" id="kgtmb" name="kgtmb" step="any" required>
                 </div>
                 <div class="mb-3">
-                    <label for="mIMC" class="form-label">estatura(m)</label>
-                    <input type="number" class="form-control" id="mIMC" name="mIMC" step="any" required>
+                    <label for="mIMC" class="form-label">estatura(cm)</label>
+                    <input type="number" class="form-control" id="mtmb" name="mtmb" step="any" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mIMC" class="form-label">edad(años)</label>
+                    <input type="number" class="form-control" id="añostmb" name="sñostmb" step="any" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+    
             <div class="bg-secondary container text-center form-control">
-                <a href="https://fundaciondelcorazon.com/prevencion/calculadoras-nutricion/imc.html" target="_blank">Aqui tienes mas informacion importante hacerca de el IMC</a>
+                <a href="https://my-clevelandclinic-org.translate.goog/health/body/basal-metabolic-rate-bmr?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc&_x_tr_hist=true" target="_blank">Aqui tienes mas informacion importante hacerca de el IMC</a>
             </div>
         </div>
+        <script>
+            function calcularIMC(event) {
+                event.preventDefault();
+                const peso = parseFloat(document.getElementById('kgtmb').value);
+                const altura_cm = parseFloat(document.getElementById('cmtmb').value);
+                const edad = parseFloat(document.getElementById('añostmb').value);
+                
+                if (peso > 0 && altura_cm > 0) {
+                    const altura_m = altura_cm / 100;
+                    const imc = peso / (altura_m * altura_m);
+                    const imc_redondeado = imc.toFixed(2);
+                    
+                    document.getElementById('valorIMC').textContent = imc_redondeado;
+                    document.getElementById('resultadoIMC').style.display = 'block';
+                } else {
+                    alert('Por favor ingresa valores válidos');
+                }
+            }
+        </script>
     </div>
 </div>
 
