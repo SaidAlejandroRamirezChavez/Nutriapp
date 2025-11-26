@@ -1,7 +1,9 @@
+
 from flask import Flask, render_template, request, redirect, url_for, session
+import os
+import requests
 
 app = Flask(__name__)
-app.secret_key = "cambiar_por_una_clave_secreta_en_produccion"
 
 @app.route("/")
 def index():
@@ -12,8 +14,49 @@ def registro():
     return render_template("Registro.html")
 
 @app.route("/recetas")
-def RECETAS():   
-    return render_template("RECETAS.html")
+def RECETAS():
+    # Leer la API key desde variable de entorno para evitar exponerla en el repo
+    # Establece en Windows PowerShell: $env:API_NINJAS_KEY = 'tu_clave_aqui'
+    API_KEY = os.environ.get('API_NINJAS_KEY')
+
+    # Tomar query del parámetro GET 'query' (formulario), por defecto 'apple'
+    q = request.args.get('query', '').strip()
+    if not q:
+        q = 'apple'
+
+    api_url = f"https://api.api-ninjas.com/v1/nutrition?query={requests.utils.quote(q)}"
+    headers = {"X-Api-Key": API_KEY}
+
+    api_data = None
+    error = None
+
+    if not API_KEY:
+        error = (
+            "API key no configurada. Por favor guarda tu clave en la variable de entorno API_NINJAS_KEY. "
+            "Ejemplo en PowerShell: $env:API_NINJAS_KEY = 'tu_clave_aqui'"
+        )
+        return render_template("RECETAS.html", api_key_present=False, api_data=api_data, error=error)
+    try:
+        response = requests.get(api_url, headers=headers, timeout=10)
+        if response.status_code == 200:
+            api_data = response.json()
+        elif response.status_code in (400, 401, 403):
+            # Proveer mensaje más claro para claves inválidas/permiso
+            try:
+                body = response.json()
+                msg = body.get('error') or body.get('message') or response.text
+            except Exception:
+                msg = response.text
+            error = f"Error al consultar la API ({response.status_code}): {msg}"
+        elif response.status_code == 404:
+            api_data = []
+            error = "No se encontraron datos para ese alimento."
+        else:
+            error = f"Error al consultar la API: {response.status_code} - {response.text}"
+    except Exception as e:
+        error = f"No se pudo conectar a la API: {e}"
+
+    return render_template("RECETAS.html", api_key_present=bool(API_KEY), api_data=api_data, error=error)
 
 @app.route("/verificacion", methods=["GET", "POST"])
 def verificacion():

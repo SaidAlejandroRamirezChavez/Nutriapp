@@ -3,8 +3,62 @@
 {% block contenido  %}
 
 <div class="container p-2 bg-info form-control">
-    <h3 class="text-center">Buscar ingredientes y recetas</h3>
-    <input type="number" class="container p-2 form-control" id="ingredientes" name="ingredientes" step="any" >
+    <h3 class=" container text-center">Buscar ingredientes y recetas</h3>
+    <form method="get" action="{{ url_for('RECETAS') }}" class="d-flex gap-2">
+        <input type="text" class="form-control" id="query" name="query" placeholder="Escribe un alimento (ej. apple, banana)" value="{{ request.args.get('query', '') }}" required>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
 </div>
+
+<div class="container mt-4">
+    <h5>Estado de la clave API:</h5>
+    {% if api_key_present %}
+        <div class="alert alert-success">La API key está configurada ✅</div>
+    {% else %}
+        <div class="alert alert-warning">La API key no está configurada. La búsqueda usará datos por defecto y la API no responderá.</div>
+        <div class="small mt-2">
+            Para configurar la clave en PowerShell (temporalmente):
+            <pre>$env:API_NINJAS_KEY = 'tu_clave_aqui'</pre>
+            Para definirla permanentemente en Windows, agrega la variable en las variables de sistema o usa un archivo .env + python-dotenv.
+        </div>
+    {% endif %}
+</div>
+
+{% if error %}
+<div class="alert alert-danger mt-3">{{ error }}</div>
+{% endif %}
+
+{% if api_data %}
+<div class="container mt-4">
+    <h5>Resultados para: <strong>{{ request.args.get('query') or 'apple' }}</strong></h5>
+    <!-- api-ninjas nutrition endpoint returns a list of objects -->
+    {% for item in api_data %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="card-title text-capitalize">{{ item.name or item.food_name or 'Alimento' }}</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled mb-0">
+                        {% if item.serving_size_g is defined %}<li>Porción (g): {{ item.serving_size_g }}</li>{% endif %}
+                        {% if item.calories is defined %}<li>Calorías: {{ item.calories }} kcal</li>{% endif %}
+                        {% if item.serving_size is defined %}<li>Porción: {{ item.serving_size }}</li>{% endif %}
+                        {% if item.fat_total_g is defined %}<li>Grasa total: {{ item.fat_total_g }} g</li>{% endif %}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled mb-0">
+                        {% if item.sugar_g is defined %}<li>Azúcares: {{ item.sugar_g }} g</li>{% endif %}
+                        {% if item.fiber_g is defined %}<li>Fibra: {{ item.fiber_g }} g</li>{% endif %}
+                        {% if item.protein_g is defined %}<li>Proteína: {{ item.protein_g }} g</li>{% endif %}
+                        {% if item.sodium_mg is defined %}<li>Sodio: {{ item.sodium_mg }} mg</li>{% endif %}
+                    </ul>
+                </div>
+            </div>
+            <pre class="mt-2 small d-none">{{ item | tojson(indent=2) }}</pre>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 
 {% endblock %}
