@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block contenido  %}
+<div class="container p-3">
+    <div class="card text-center">
+        <div class="card-header">
+            Resultados de tu IMC
+        </div>
+                                <div class="card-body">
+                                        {% if imc is defined %}
+                                                <h5 class="card-title">Tu IMC es: <br>{{ imc }}</h5>
+                                                <p class="card-text">{{ categoria or '' }}</p>
+                                                {% if peso_ideal is defined %}
+                                                        <p class="card-text">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
+                                                {% endif %}
+
+                                        {% elif tmb is defined %}
+                                                <h5 class="card-title">Tu TMB es: <br>{{ tmb }} calorías/día</h5>
+                                                {% if peso_ideal is defined %}
+                                                        <p class="card-text">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
+                                                {% endif %}
+                                                {% if mantenimiento is defined %}
+                                                        <p class="card-text">Calorías mantenimiento (estimadas): <strong>{{ mantenimiento }} kcal/día</strong></p>
+                                                        <p class="card-text small">Distribución ejemplo (50% carbohidratos / 20% proteínas / 30% grasas):</p>
+                                                        <ul class="list-unstyled small">
+                                                                <li>Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
+                                                                <li>Proteínas: <strong>{{ protein_g }} g</strong> (recom: {{ protein_per_kg }} g)</li>
+                                                                <li>Grasas: <strong>{{ fat_g }} g</strong></li>
+                                                        </ul>
+                                                {% endif %}
+
+                                        {% elif gct is defined %}
+                                                <h5 class="card-title">Gasto según actividad (GCT): <br>{{ gct }} kcal/día</h5>
+                                                {% if base_tmb is defined %}
+                                                        <p class="card-text">TMB base usada: <strong>{{ base_tmb }} kcal/día</strong></p>
+                                                {% endif %}
+                                                {% if activity %}
+                                                        <p class="card-text">Actividad usada: {{ activity }}</p>
+                                                {% endif %}
+                                                {% if carbs_g is defined %}
+                                                        <p class="card-text small">Distribución ejemplo (50% carbohidratos / 20% proteínas / 30% grasas):</p>
+                                                        <ul class="list-unstyled small">
+                                                                <li>Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
+                                                                <li>Proteínas: <strong>{{ protein_g }} g</strong></li>
+                                                                <li>Grasas: <strong>{{ fat_g }} g</strong></li>
+                                                        </ul>
+                                                {% endif %}
+
+                                        {% else %}
+                                                <h5 class="card-title">No hay resultados para mostrar</h5>
+                                                <p class="card-text">Asegúrate de enviar algún formulario desde la página de herramientas.</p>
+                                        {% endif %}
+                                </div>
+                <a href="{{ url_for('Herramientas') }}" class="btn btn-primary">Calcular de nuevo</a>
+    </div>
+
+    
+
+{% endblock %}

@@ -15,106 +15,145 @@
     <div class="col-md-8 text-center">
         <div class="card text-center">
             <div class="card-header">
-                calculadora IMC: (kg/m²). 
+                calculadora IMC:
             </div>
-            <form id="formIMC" onsubmit="calcularIMC(event)">
+            <form method="POST" action="{{ url_for('Resultados') }}">
                 <div class="mb-3">
                     <label for="kgIMC" class="form-label">peso(kg)</label>
-                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" required>
+                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
                 </div>
                 <div class="mb-3">
-                    <label for="cmIMC" class="form-label">estatura(cm)</label>
-                    <input type="number" class="form-control" id="cmIMC" name="cmIMC" step="any" required>
+                    <label for="mIMC" class="form-label">estatura(cm)</label>
+                    <input type="number" class="form-control" id="mIMC" name="mIMC" step="any" >
                 </div>
-                <button type="submit" class="btn btn-primary">Calcular</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <div id="resultadoIMC" class="mt-3" style="display:none;">
-                <div class="alert alert-info">
-                    <h5>Tu IMC es: <strong id="valorIMC"></strong></h5>
-                </div>
-            </div>
-            <div class="bg-secondary container text-center form-control">
-                <a href="" target="_blank">Aqui tienes mas informacion importante hacerca de el IMC</a>
-            </div>
         </div>
-
-        <script>
-            function calcularIMC(event) {
-                event.preventDefault();
-                const peso = parseFloat(document.getElementById('kgIMC').value);
-                const altura_cm = parseFloat(document.getElementById('cmIMC').value);
-                
-                if (peso > 0 && altura_cm > 0) {
-                    const altura_m = altura_cm / 100;
-                    const imc = peso / (altura_m * altura_m);
-                    const imc_redondeado = imc.toFixed(2);
-                    
-                    document.getElementById('valorIMC').textContent = imc_redondeado;
-                    document.getElementById('resultadoIMC').style.display = 'block';
-                } else {
-                    alert('Por favor ingresa valores válidos');
-                }
-            }
-        </script>
     </div>
 </div>
 
-<div class="row text-center  bg-secondary">
-    <div class=" col-4 container  bg-info">
-        <div class="overflow-y-scroll"><strong>Que es el TBM?:</strong> <br> El TMB significa Tasa Metabólica Basal, que es la cantidad mínima de energía (calorías) que tu cuerpo necesita para mantener sus funciones vitales en reposo, como respirar, hacer circular la sangre y mantener la temperatura corporal. Representa alrededor del 60% al 70% de la energía que gastas diariamente y varía de persona a persona según factores como la masa muscular, la edad y el sexo. </div>
+
+
+<div class="row text-center  bg-info">
+    <div class=" col-4 container  bg-info p-4">
+        <div class="overflow-y-scroll"><strong>Que es el TMB?:</strong> <br>El TMB significa Tasa Metabólica Basal, que es la cantidad mínima de energía (calorías) que tu cuerpo necesita para mantener sus funciones vitales en reposo, como respirar, hacer circular la sangre y mantener la temperatura corporal. Representa alrededor del 60% al 70% de la energía que gastas diariamente y varía de persona a persona según factores como la masa muscular, la edad y el sexo</div>
     </div>
     <div class="col-md-8 text-center">
         <div class="card text-center">
             <div class="card-header">
-                Calculadora de Tasa Metabólica Basal (TMB)
-
+                calculadora TMB:
             </div>
             <form method="POST" action="{{ url_for('Resultados') }}">
                 <div class="mb-3">
-                    cual es tu sexo?<br>
-                    <select name="sexo" id="sexo">
-                        <option value="hombre">hombre</option>
-                        <option value="mujer">mujer</option>
+                    <label for="kgTMB" class="form-label">sexo</label>
+                    <select  class="form-label" name="sexo" id="sexoTMB">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="kgIMC" class="form-label">peso(kg)</label>
-                    <input type="number" class="form-control" id="kgtmb" name="kgtmb" step="any" required>
+                    <label for="kgTMB" class="form-label">peso(kg)</label>
+                    <input type="number" class="form-control" id="kgTMB" name="kg" step="any" >
                 </div>
                 <div class="mb-3">
                     <label for="mIMC" class="form-label">estatura(cm)</label>
-                    <input type="number" class="form-control" id="mtmb" name="mtmb" step="any" required>
+                    <input type="number" class="form-control" id="mTMB" name="cm" step="any" >
                 </div>
                 <div class="mb-3">
                     <label for="mIMC" class="form-label">edad(años)</label>
-                    <input type="number" class="form-control" id="añostmb" name="sñostmb" step="any" required>
+                    <input type="number" class="form-control" id="edadTMB" name="edad" step="any" >
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-    
-            <div class="bg-secondary container text-center form-control">
-                <a href="https://my-clevelandclinic-org.translate.goog/health/body/basal-metabolic-rate-bmr?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc&_x_tr_hist=true" target="_blank">Aqui tienes mas informacion importante hacerca de el IMC</a>
-            </div>
         </div>
-        <script>
-            function calcularIMC(event) {
-                event.preventDefault();
-                const peso = parseFloat(document.getElementById('kgtmb').value);
-                const altura_cm = parseFloat(document.getElementById('cmtmb').value);
-                const edad = parseFloat(document.getElementById('añostmb').value);
+    </div>
+</div>
+
+
+
+
+<div class="row text-center  bg-info">
+    <div class=" col-4 container  bg-secondary">
+        <div class="overflow-y-scroll"><strong>Que es el GCT?:</strong> <br>GCT significa Grasa Corporal Total en el contexto de la nutrición, es una medida que representa la cantidad total de grasa en el cuerpo. Se diferencia del peso corporal total porque incluye la masa grasa, la masa muscular y otros componentes. Esta métrica se utiliza para evaluar la composición corporal, el estado de sobrepeso u obesidad y para entender mejor los riesgos metabólicos. </div>
+    </div>
+    <div class="col-md-8 text-center">
+        <div class="card text-center">
+            <div class="card-header">
+                calculadora GCT:
+            </div>
+            <form method="POST" action="{{ url_for('Resultados') }}">
+                <div class="mb-3">
+                    <label for="kgIMC" class="form-label">tu TMB</label>
+                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
+                </div>
+                <div class="mb-3">
+                    <label for="mIMC" class="form-label">Actividad fisica</label>
+                    <select name="actGCT" id="actGCT">
+                        <option value="Sedentario">Sedentario</option>
+                        <option value="Ligero">Ligero</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Intenso">Intenso</option>
+                        <option value="Muy intenso">Muy intenso/option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row text-center  bg-info">
+    <div class=" col-4 container  bg-info">
+        <div class="overflow-y-scroll"><strong>Calculadora de Peso Corporal Ideal:</strong> <br>El peso corporal ideal es el peso en el que una persona tiene el menor riesgo de mortalidad y mantiene un buen estado de salud, considerando factores como la altura, composición corporal, edad, sexo y estilo de vida. Se puede calcular una estimación a través del Índice de Masa Corporal (IMC), que relaciona el peso y la estatura, pero es importante recordar que es una guía general y cada persona es única, con un peso ideal personalizado. </div>
+    </div>
+    <div class="col-md-8 text-center">
+        <div class="card text-center">
+            <div class="card-header">
+                peso ideal:
+            </div>
+            <form method="POST" action="{{ url_for('Resultados') }}">
+                <div class="mb-3">
+                    <label for="mIMC" class="form-label">estatura(m)</label>
+                    <input type="number" class="form-control" id="mPi" name="mPi" step="any" >
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row text-center  bg-info">
+    <div class=" col-4 container  bg-secondary">
+        <div class="overflow-y-scroll"><strong>Calculadora de Macronutrientes:</strong> <br>Los macronutrientes son nutrientes que el cuerpo necesita en grandes cantidades para proporcionar energía, construir y reparar tejidos, y regular procesos metabólicos. Los tres macronutrientes principales son los carbohidratos, las proteínas y las grasas (o lípidos). Cada uno cumple funciones esenciales y se encuentra en diferentes tipos de alimentos </div>
+    </div>
+    <div class="col-md-8 text-center">
+        <div class="card text-center">
+            <div class="card-header">
+                macronutrientes:
+            </div>
+            <form method="POST" action="{{ url_for('Resultados') }}">
+                <div class="mb-3">
+                    <label for="kgIMC" class="form-label">tmb(kg)</label>
+                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
+                </div>
+                <div class="mb-3">
+                    <label for="mIMC" class="form-label">objetivo(m)</label>
+                    <select name="" id=""> 
+                        <option value="mantener peso">mantener peso</option>
+                        <option value="perder peso">perder peso</option>
+                        <option value="ganar musculo">ganar musculo</option>
+                    </select>
                 
-                if (peso > 0 && altura_cm > 0) {
-                    const altura_m = altura_cm / 100;
-                    const imc = peso / (altura_m * altura_m);
-                    const imc_redondeado = imc.toFixed(2);
-                    
-                    document.getElementById('valorIMC').textContent = imc_redondeado;
-                    document.getElementById('resultadoIMC').style.display = 'block';
-                } else {
-                    alert('Por favor ingresa valores válidos');
-                }
-            }
-        </script>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 
