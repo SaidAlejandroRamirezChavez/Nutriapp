@@ -32,9 +32,6 @@
         <li class="nav-item">
           <a class="nav-link active " aria-current="page" href="\herramientas" target="_self">herramientas</a>
         </li> 
-        <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="\recetas" target="_self">receta</a>
-        </li> 
       </ul>
     </div>
     <div class="container collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -43,8 +40,14 @@
           <a class="nav-link active" aria-current="page" href="\registro" target="_self">registrar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="\perfil" target="_self">perfil</a>
+          <a class="nav-link active " aria-current="page" href="/iniciar_sesion" target="_self">login</a>
         </li>
+        {% if session is defined %}
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="\perfil" target="_self">perfil</a>
+          </li>
+        {% endif %}
+
       </ul>
     </div>
   </div>

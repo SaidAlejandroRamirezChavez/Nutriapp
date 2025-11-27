@@ -1,17 +1,67 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
-import os
-import requests
+import json
 
 app = Flask(__name__)
+
+def _load_local_secrets(path='secrets.json'):
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+    except Exception:
+        return {}
+
+_SECRETS = _load_local_secrets()
+app.secret_key = _SECRETS.get('FLASK_SECRET', 'dev-secret')
 
 @app.route("/")
 def index():
     return render_template("inicio.html")
 
+@app.route("/iniciar")
+def iniciar():
+    return render_template("iniciar.html")
+
+
+@app.route('/iniciar_sesion', methods=['GET', 'POST'])
+def iniciar_sesion():
+    if request.method == 'GET':
+        return render_template('iniciar.html')
+
+
+    username = (request.form.get('username') or '').strip()
+    password = (request.form.get('password') or '').strip()
+
+
+    registered_name = session.get('nombre')
+
+    if registered_name and username and username == registered_name:
+        session['usuario'] = username
+        session['message'] = 'Bienvenido de nuevo, ' + username
+        return redirect(url_for('perfil'))
+
+    if username == 'admin' and password == 'secret':
+        session['usuario'] = 'admin'
+        session['nombre'] = 'admin'
+        return redirect(url_for('perfil'))
+
+
+    error = 'Usuario o contraseña incorrectos. Prueba admin / secret o regístrate primero.'
+    return render_template('iniciar.html', error=error)
+
+
+@app.route('/cerrar_sesion')
+def cerrar_sesion():
+    session.pop('usuario', None)
+
+    return redirect(url_for('index'))
+
 @app.route("/registro")
 def registro():
     return render_template("Registro.html")
+
 
 @app.route("/verificacion", methods=["GET", "POST"])
 def verificacion():
@@ -108,7 +158,7 @@ def Resultados():
                 else:
                     categoria = 'Obesidad'
 
-                # Compute simple 'peso ideal' using BMI target = 22
+
                 try:
                     peso_ideal = round(22 * (estatura ** 2), 1)
                 except Exception:
@@ -133,20 +183,19 @@ def Resultados():
 
                 tmb = int(round(10 * peso + 6.25 * altura_cm - 5 * edad + add))
 
-                # peso ideal (BMI target 22)
                 altura_m = altura_cm / 100.0
                 peso_ideal = round(22 * (altura_m ** 2), 1)
 
-                # default maintenance (assume sedentary if no activity provided)
+
                 maintenance = int(round(tmb * 1.2))
 
-                # macros 50% carbs / 20% protein / 30% fat (kcal -> grams)
+
                 kcal = maintenance
                 carbs_g = int(round((kcal * 0.5) / 4))
                 protein_g = int(round((kcal * 0.2) / 4))
                 fat_g = int(round((kcal * 0.3) / 9))
 
-                # also give a protein recommendation per kg (1.6 g/kg)
+
                 protein_per_kg = int(round(1.6 * peso))
 
                 return render_template("Resultados.html", tmb=tmb, peso_ideal=peso_ideal,
@@ -156,14 +205,14 @@ def Resultados():
                 error_message = "Valores inválidos para TMB."
                 return render_template("Herramientas.html", error=error_message)
 
-        # GCT (calorías diarias según actividad) expects 'actGCT' (actividad) and 'kgIMC' field
+
         act = form.get('actGCT')
         base_tmb = form.get('kgIMC') or form.get('kg') or form.get('tmb')
         if act and base_tmb:
             try:
                 tmb_val = float(base_tmb)
                 activity = act.strip().lower()
-                # activity factors commonly used
+
                 factors = {
                     'sedentario': 1.2,
                     'ligero': 1.375,
@@ -175,7 +224,6 @@ def Resultados():
                 factor = factors.get(activity, 1.2)
                 mantenimiento = int(round(tmb_val * factor))
 
-                # macros based on maintenance calories (50/20/30)
                 kcal = mantenimiento
                 carbs_g = int(round((kcal * 0.5) / 4))
                 protein_g = int(round((kcal * 0.2) / 4))
