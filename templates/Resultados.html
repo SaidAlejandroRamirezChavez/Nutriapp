@@ -3,18 +3,18 @@
 {% block contenido  %}
 <div class="container p-3">
     <div class="card text-center">
-        <div class="card-header">
-            Resultados de tu IMC
-        </div>
+                <div class="card-header">
+                        {% if form_type == 'imc' %}Resultados IMC{% elif form_type == 'tmb' %}Resultados TMB{% elif form_type == 'gct' %}Resultados GCT{% elif form_type == 'peso_ideal' %}Peso ideal{% elif form_type == 'macros' %}Macronutrientes{% else %}Resultados{% endif %}
+                </div>
                                 <div class="card-body">
-                                        {% if imc is defined %}
+                                        {% if form_type == 'imc' and imc is defined %}
                                                 <h5 class="card-title">Tu IMC es: <br>{{ imc }}</h5>
                                                 <p class="card-text">{{ categoria or '' }}</p>
                                                 {% if peso_ideal is defined %}
                                                         <p class="card-text">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
                                                 {% endif %}
 
-                                        {% elif tmb is defined %}
+                                        {% elif form_type == 'tmb' and tmb is defined %}
                                                 <h5 class="card-title">Tu TMB es: <br>{{ tmb }} calorías/día</h5>
                                                 {% if peso_ideal is defined %}
                                                         <p class="card-text">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
@@ -29,13 +29,10 @@
                                                         </ul>
                                                 {% endif %}
 
-                                        {% elif gct is defined %}
+                                        {% elif form_type == 'gct' and gct is defined %}
                                                 <h5 class="card-title">Gasto según actividad (GCT): <br>{{ gct }} kcal/día</h5>
                                                 {% if base_tmb is defined %}
                                                         <p class="card-text">TMB base usada: <strong>{{ base_tmb }} kcal/día</strong></p>
-                                                {% endif %}
-                                                {% if activity %}
-                                                        <p class="card-text">Actividad usada: {{ activity }}</p>
                                                 {% endif %}
                                                 {% if carbs_g is defined %}
                                                         <p class="card-text small">Distribución ejemplo (50% carbohidratos / 20% proteínas / 30% grasas):</p>
@@ -45,6 +42,18 @@
                                                                 <li>Grasas: <strong>{{ fat_g }} g</strong></li>
                                                         </ul>
                                                 {% endif %}
+
+                                        {% elif form_type == 'peso_ideal' and peso_ideal is defined %}
+                                                <h5 class="card-title">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></h5>
+
+                                        {% elif form_type == 'macros' and kcal is defined %}
+                                                <h5 class="card-title">Distribución de macronutrientes — {{ macro_goal or 'Objetivo' }}</h5>
+                                                <p class="card-text">Calorías objetivo: <strong>{{ kcal }} kcal</strong></p>
+                                                <ul class="list-unstyled small">
+                                                        <li>Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
+                                                        <li>Proteínas: <strong>{{ protein_g }} g</strong></li>
+                                                        <li>Grasas: <strong>{{ fat_g }} g</strong></li>
+                                                </ul>
 
                                         {% else %}
                                                 <h5 class="card-title">No hay resultados para mostrar</h5>

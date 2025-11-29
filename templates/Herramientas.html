@@ -18,6 +18,7 @@
                 calculadora IMC:
             </div>
             <form method="POST" action="{{ url_for('Resultados') }}">
+                <input type="hidden" name="form_type" value="imc">
                 <div class="mb-3">
                     <label for="kgIMC" class="form-label">peso(kg)</label>
                     <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
@@ -44,6 +45,7 @@
                 calculadora TMB:
             </div>
             <form method="POST" action="{{ url_for('Resultados') }}">
+                <input type="hidden" name="form_type" value="tmb">
                 <div class="mb-3">
                     <label for="kgTMB" class="form-label">sexo</label>
                     <select  class="form-label" name="sexo" id="sexoTMB">
@@ -82,6 +84,7 @@
                 calculadora GCT:
             </div>
             <form method="POST" action="{{ url_for('Resultados') }}">
+                <input type="hidden" name="form_type" value="gct">
                 <div class="mb-3">
                     <label for="kgIMC" class="form-label">tu TMB</label>
                     <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
@@ -115,6 +118,7 @@
                 peso ideal:
             </div>
             <form method="POST" action="{{ url_for('Resultados') }}">
+                <input type="hidden" name="form_type" value="peso_ideal">
                 <div class="mb-3">
                     <label for="mIMC" class="form-label">estatura(m)</label>
                     <input type="number" class="form-control" id="mPi" name="mPi" step="any" >
@@ -138,13 +142,14 @@
                 macronutrientes:
             </div>
             <form method="POST" action="{{ url_for('Resultados') }}">
+                <input type="hidden" name="form_type" value="macros">
                 <div class="mb-3">
-                    <label for="kgIMC" class="form-label">tmb(kg)</label>
-                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
+                    <label for="tmb_macros" class="form-label">Calorías (TMB o mantenimiento)</label>
+                    <input type="number" class="form-control" id="tmb_macros" name="tmb_kcal" step="any" >
                 </div>
                 <div class="mb-3">
-                    <label for="mIMC" class="form-label">objetivo(m)</label>
-                    <select name="" id=""> 
+                    <label for="macro_goal" class="form-label">objetivo</label>
+                    <select name="macro_goal" id="macro_goal"> 
                         <option value="mantener peso">mantener peso</option>
                         <option value="perder peso">perder peso</option>
                         <option value="ganar musculo">ganar musculo</option>

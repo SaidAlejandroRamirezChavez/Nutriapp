@@ -147,6 +147,8 @@ def Resultados():
     if request.method == "POST":
         form = request.form
 
+        form_type = (form.get('form_type') or '').strip().lower()
+
         kg_imc = form.get("kgIMC") or form.get("kg")
         m_imc = form.get("mIMC") or form.get("m")
 
@@ -156,7 +158,7 @@ def Resultados():
         años_tmb = form.get("añostmb") or form.get("sñostmb") or form.get("edad")
         sexo = form.get("sexo")
 
-        if kg_imc and m_imc:
+        if form_type == 'imc' and kg_imc and m_imc:
             try:
                 peso = float(kg_imc)
                 estatura = float(m_imc)
@@ -175,17 +177,12 @@ def Resultados():
                     categoria = 'Obesidad'
 
 
-                try:
-                    peso_ideal = round(22 * (estatura ** 2), 1)
-                except Exception:
-                    peso_ideal = None
-
-                return render_template("Resultados.html", imc=imc, categoria=categoria, peso_ideal=peso_ideal)
+                return render_template("Resultados.html", form_type='imc', imc=imc, categoria=categoria)
             except (TypeError, ValueError, ZeroDivisionError):
                 error_message = "Valores inválidos para IMC."
                 return render_template("Herramientas.html", error=error_message)
 
-        if kg_tmb and cm_tmb and años_tmb:
+        if form_type == 'tmb' and kg_tmb and cm_tmb and años_tmb:
             try:
                 peso = float(kg_tmb)
                 altura_cm = float(cm_tmb)
@@ -199,24 +196,7 @@ def Resultados():
 
                 tmb = int(round(10 * peso + 6.25 * altura_cm - 5 * edad + add))
 
-                altura_m = altura_cm / 100.0
-                peso_ideal = round(22 * (altura_m ** 2), 1)
-
-
-                maintenance = int(round(tmb * 1.2))
-
-
-                kcal = maintenance
-                carbs_g = int(round((kcal * 0.5) / 4))
-                protein_g = int(round((kcal * 0.2) / 4))
-                fat_g = int(round((kcal * 0.3) / 9))
-
-
-                protein_per_kg = int(round(1.6 * peso))
-
-                return render_template("Resultados.html", tmb=tmb, peso_ideal=peso_ideal,
-                                       mantenimiento=maintenance, carbs_g=carbs_g,
-                                       protein_g=protein_g, fat_g=fat_g, protein_per_kg=protein_per_kg)
+                return render_template("Resultados.html", form_type='tmb', tmb=tmb)
             except (TypeError, ValueError):
                 error_message = "Valores inválidos para TMB."
                 return render_template("Herramientas.html", error=error_message)
@@ -224,7 +204,7 @@ def Resultados():
 
         act = form.get('actGCT')
         base_tmb = form.get('kgIMC') or form.get('kg') or form.get('tmb')
-        if act and base_tmb:
+        if form_type == 'gct' and act and base_tmb:
             try:
                 tmb_val = float(base_tmb)
                 activity = act.strip().lower()
@@ -239,18 +219,36 @@ def Resultados():
                 }
                 factor = factors.get(activity, 1.2)
                 mantenimiento = int(round(tmb_val * factor))
-
-                kcal = mantenimiento
-                carbs_g = int(round((kcal * 0.5) / 4))
-                protein_g = int(round((kcal * 0.2) / 4))
-                fat_g = int(round((kcal * 0.3) / 9))
-
-                return render_template("Resultados.html", gct=mantenimiento, activity=act,
-                                       base_tmb=round(tmb_val), carbs_g=carbs_g,
-                                       protein_g=protein_g, fat_g=fat_g)
+                return render_template("Resultados.html", form_type='gct', gct=mantenimiento, activity=act,
+                                       base_tmb=round(tmb_val))
             except (TypeError, ValueError):
                 error_message = "Valores inválidos para GCT."
                 return render_template("Herramientas.html", error=error_message)
+
+        # peso ideal form
+        if form_type == 'peso_ideal':
+            m_pi = form.get('mPi')
+            try:
+                altura_m = float(m_pi)
+                if altura_m > 10:  # si se envió en cm
+                    altura_m = altura_m / 100.0
+                peso_ideal = round(22 * (altura_m ** 2), 1)
+                return render_template('Resultados.html', form_type='peso_ideal', peso_ideal=peso_ideal)
+            except Exception:
+                return render_template('Herramientas.html', error='Altura inválida para calcular peso ideal.')
+
+        # macros form
+        if form_type == 'macros':
+            tmb_kcal = form.get('tmb_kcal') or form.get('kgIMC')
+            goal = form.get('macro_goal') or ''
+            try:
+                kcal = int(round(float(tmb_kcal)))
+                carbs_g = int(round((kcal * 0.5) / 4))
+                protein_g = int(round((kcal * 0.2) / 4))
+                fat_g = int(round((kcal * 0.3) / 9))
+                return render_template('Resultados.html', form_type='macros', kcal=kcal, carbs_g=carbs_g, protein_g=protein_g, fat_g=fat_g, macro_goal=goal)
+            except Exception:
+                return render_template('Herramientas.html', error='Valor inválido para calcular macronutrientes.')
 
         return render_template("Herramientas.html", error="Formulario no reconocido. Usa el formulario de la página Herramientas.")
 
