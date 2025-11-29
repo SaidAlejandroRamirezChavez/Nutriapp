@@ -2,7 +2,7 @@
 
 {% block contenido  %}
 
-<div class="container p-3">
+<div class="container mt-4">
     <div class="container col-7 bg-info">
         <h2 class="text-center">Registro de Usuario</h2>
             {% if error %}
@@ -10,7 +10,7 @@
                 {{ error }}
             </div>
             {% endif %}
-    <form action="{{ url_for('verificacion') }}" method="post"> 
+    <form action="{{ url_for('verificacion') }}" method="post" class="form-control"> 
 
                 <div class="row">
                     <div class="col-6">

@@ -2,18 +2,21 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import json
 
+
 app = Flask(__name__)
 
-def _load_local_secrets(path='secrets.json'):
+# Load local secrets from secrets.json (keeps configuration out of source code)
+def _load_secrets(path='secrets.json'):
     try:
-        with open(path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        with open(path, 'r', encoding='utf-8') as fh:
+            return json.load(fh)
     except FileNotFoundError:
         return {}
     except Exception:
         return {}
 
-_SECRETS = _load_local_secrets()
+_SECRETS = _load_secrets()
+# Ensure a secret key is set so Flask sessions work
 app.secret_key = _SECRETS.get('FLASK_SECRET', 'dev-secret')
 
 @app.route("/")
@@ -39,12 +42,15 @@ def iniciar_sesion():
 
     if registered_name and username and username == registered_name:
         session['usuario'] = username
+
+        session['registered'] = True
         session['message'] = 'Bienvenido de nuevo, ' + username
         return redirect(url_for('perfil'))
 
     if username == 'admin' and password == 'secret':
         session['usuario'] = 'admin'
         session['nombre'] = 'admin'
+
         return redirect(url_for('perfil'))
 
 
@@ -55,6 +61,7 @@ def iniciar_sesion():
 @app.route('/cerrar_sesion')
 def cerrar_sesion():
     session.pop('usuario', None)
+    session.pop('registered', None)
 
     return redirect(url_for('index'))
 
@@ -95,12 +102,21 @@ def verificacion():
         session['alimentacion'] = alimentacion
         session['intolerancias'] = intolerancias
 
+
+        session['usuario'] = nombre
+        session['registered'] = True
+
         return redirect(url_for('perfil'))
 
 
 
 @app.route("/perfil" , methods=["GET", "POST"])
 def perfil():
+
+    if not session.get('registered'):
+
+        return redirect(url_for('iniciar'))
+
     nombre = session.get('nombre')
     apellidos = session.get('apellidos')
     edad = session.get('edad')
