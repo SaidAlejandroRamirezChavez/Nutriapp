@@ -1,52 +1,72 @@
 {% extends "base.html" %}
 
 {% block contenido  %}
-<div class="container">
-  <h1>Educacion e informacion importante para la nutricion:</h1>
-  <div class="row container p-3 bg-info text-center">
-      <div class="card col-4" style="max-width: 540px;">
-        <div div class="row g-0">
-          <div class="col-md-4">
-            <img src="{{ url_for('static', filename='hamster.gif') }}" class="img-fluid rounded-start" alt="hamster con dedo pulgar levantado">
+<div class="container py-5">
+  <div class="text-center mb-4">
+    <h1 class="display-6">Educación y recursos sobre nutrición</h1>
+    <p class="text-muted">Aprende a leer etiquetas, distinguir mitos de realidades y elegir mejores alimentos.</p>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="row g-0 align-items-center">
+          <div class="col-md-4 text-center p-3">
+            <img src="{{ url_for('static', filename='hamster.gif') }}" class="img-fluid rounded" alt="hamster con dedo pulgar levantado">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">!LEE¡</h5>
-              <p class="card-text">Leer correctamente las etiquetas nutricionales es una habilidad fundamental para tomar decisiones alimentarias más saludables. A través de ellas puedes conocer qué estás comiendo, comparar productos y evitar ingredientes que no benefician tu salud. Sin embargo, muchas veces su diseño o terminología puede generar confusión.</p>
+              <h5 class="card-title">Leer etiquetas</h5>
+              <p class="card-text small text-muted">Saber interpretar etiquetas te ayuda a comparar productos y evitar ingredientes con poco beneficio para la salud.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card col-4" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{{ url_for('static', filename='candy hamster.jpg') }}" class="img-fluid rounded-start" alt="hamster rodeado de dulces">
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="row g-0 align-items-center">
+          <div class="col-md-4 text-center p-3">
+            <img src="{{ url_for('static', filename='candy hamster.jpg') }}" class="img-fluid rounded" alt="hamster rodeado de dulces">
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Contenidos:</h5>
-              <p class="card-text">Para leer correctamente las etiquetas nutricionales necesitamos una habilidad para poder tomar decisiones ante los alimentos que consumimos, es decir, fijarnos más en cuantas calorias tiene, cuanto % de grasa tiene, en resumen, que sean productos, comida, platillos más saludables y comparar productos entre sí para ver cual es mas economica y cual es mejor en cuanto beneficios, aunque algunas veces su diseño ya que generan confusiones.</p>
+              <h5 class="card-title">Contenido útil</h5>
+              <p class="card-text small text-muted">Busca calorías, grasas y proteínas para elegir versiones más saludables. Comparar productos te ahorra tiempo y dinero.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
-        <img src="{{ url_for('static', filename='inteligente.jpg') }}" class="img-fluid rounded-start" alt="hamster intelectual">
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm border-0">
         <div class="card-body">
-          <h5 class="card-title">links</h5>
-          <p class="card-text">un poco de informacion importante que podria ayudarte a mejorar tu comprencion de las etiquetas</p>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              links 
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="https://www.gob.mx/cms/uploads/attachment/file/55012/ManualEtiquetado_VF.pdf" target="_blank">Qué significa cada parte de las etiquetas </a></li>
-              <li><a class="dropdown-item" href="https://martinolivieri.com/alimentos-y-enfermedades/el-secreto-oculto-en-las-etiquetas-ingredientes-no-saludables-y-como-identificarlos" target="_blank">Cómo identificar los ingredientes que algunas veces ocultan </a></li>
-            </ul>
+          <h5 class="card-title">Mitos y verdades</h5>
+          <p class="card-text small text-muted">Explicamos las dietas más populares y qué riesgos o beneficios pueden tener dependiendo de tus objetivos.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a class="btn btn-outline-primary btn-sm" href="https://www.mayoclinic.org/es/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/intermittent-fasting/faq-20441303" target="_blank">Ayuno Intermitente</a>
+            <a class="btn btn-outline-secondary btn-sm" href="https://www.ilae.org/patient-care/dieta-cetog-nica/conceptos-b-sicos" target="_blank">Dieta cetogénica</a>
           </div>
         </div>
       </div>
-  </div > 
+    </div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0">
+        <img src="{{ url_for('static', filename='inteligente.jpg') }}" class="img-fluid rounded-top" alt="hamster intelectual">
+        <div class="card-body">
+          <h5 class="card-title">Links recomendados</h5>
+          <p class="card-text small text-muted">Recursos y guías para entender mejor las etiquetas y los ingredientes.</p>
+          <div class="d-flex gap-2 mt-2">
+            <a class="btn btn-outline-primary btn-sm" href="https://www.gob.mx/cms/uploads/attachment/file/55012/ManualEtiquetado_VF.pdf" target="_blank">Guía de etiquetas</a>
+            <a class="btn btn-outline-secondary btn-sm" href="https://martinolivieri.com/alimentos-y-enfermedades/el-secreto-oculto-en-las-etiquetas-ingredientes-no-saludables-y-como-identificarlos" target="_blank">Ingredientes ocultos</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <div class="row container bg-secondary p-4 text-center">
   <h3>Mitos y verdades de dietas de moda</h3>

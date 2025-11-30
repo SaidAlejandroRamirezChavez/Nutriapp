@@ -2,15 +2,21 @@
 
 {% block contenido  %}
 
-<div class="container mt-4">
-    <div class="container col-7 bg-info">
-        <h2 class="text-center">Registro de Usuario</h2>
-            {% if error %}
-            <div class="alert alert-danger" role="alert">
-                {{ error }}
-            </div>
-            {% endif %}
-    <form action="{{ url_for('verificacion') }}" method="post" class="form-control"> 
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info">
+                    <h2 class="mb-0">Registro de Usuario</h2>
+                    <small class="text-muted">Crea una cuenta local — tus datos se guardan en tu máquina.</small>
+                </div>
+                <div class="card-body">
+                        {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                        </div>
+                        {% endif %}
+        <form action="{{ url_for('verificacion') }}" method="post" class="row g-3"> 
 
                 <div class="row">
                     <div class="col-6">
@@ -116,8 +122,13 @@
                     </div>
                 </div>
 
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-        </form>
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-success">Registrarse</button>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

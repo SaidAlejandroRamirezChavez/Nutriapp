@@ -2,11 +2,19 @@
 
 {% block contenido %}
 
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <h2 class="mb-4">Perfil de Usuario</h2>
-            <p class="lead">Bienvenido {{ nombre }} {{ apellidos }}. Aquí puedes ver tu información personal.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="d-flex gap-4 align-items-start mb-4">
+                <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center p-3 fs-4">{{ nombre[0] if nombre else 'U' }}</div>
+                <div>
+                    <h2 class="mb-0">{{ nombre }} {{ apellidos }}</h2>
+                    <p class="text-muted">Perfil personal — tus datos están guardados localmente</p>
+                </div>
+                <div class="ms-auto">
+                    <a href="{{ url_for('cerrar_sesion') }}" class="btn btn-outline-danger btn-sm">Cerrar sesión</a>
+                </div>
+            </div>
 
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -15,11 +23,11 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <strong>Nombre:</strong>
-                            <p>{{ nombre }}</p>
+                            <p class="mb-0">{{ nombre }}</p>
                         </div>
                         <div class="col-md-6">
                             <strong>Apellidos:</strong>
-                            <p>{{ apellidos }}</p>
+                            <p class="mb-0">{{ apellidos }}</p>
                         </div>
                     </div>
 
@@ -39,7 +47,6 @@
                     </div>
 
                     <hr>
-
                     <h5 class="card-title mb-4">Información de Salud</h5>
 
                     <div class="row mb-3">
@@ -77,6 +84,7 @@
                         <p class="mb-0">
                             <strong>Resumen:</strong> Hola, me llamo <strong>{{ nombre }} {{ apellidos }}</strong>, tengo <strong>{{ edad }}</strong> años, mido <strong>{{ altura }}</strong> centímetros, peso <strong>{{ peso }}</strong> kg, mi objetivo es: <strong>{{ objetivo }}</strong>. Tengo alergia a: <strong>{{ alergias if alergias else "ninguna" }}</strong>. Mi tipo de alimentación: <strong>{{ alimentacion }}</strong>. Intolerancias: <strong>{{ intolerancias if intolerancias else "ninguna" }}</strong>.
                         </p>
+
                     </div>
 
                 </div>

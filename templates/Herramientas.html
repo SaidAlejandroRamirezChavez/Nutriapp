@@ -1,165 +1,229 @@
 {% extends "base.html" %}
 
-{% block contenido  %}
+{% block contenido %}
 
-
-<div class=" bg-secondary text-center container">
-    <H1>Calculadoras y herramientas</H1>
-    <p>Bien venido a la seccion de herramientas, aqui podras calcular diversas cantidades importantes para su salud.</p>
-
+<div class="container py-4 text-center">
+    <h2 class="display-6 mb-2">Calculadoras y herramientas</h2>
+    <p class="text-muted mb-4">Aquí encontrarás utilidades para tu alimentación y estado físico: IMC, TMB, GCT, peso ideal y macronutrientes.</p>
 </div>
 <div class="row text-center  bg-info">
-    <div class=" col-4 container  bg-secondary">
-        <div class="overflow-y-scroll"><strong>Que es el IMC?:</strong> <br> El IMC, o Índice de Masa Corporal, es una medida que relaciona el peso de una persona con su estatura Sirve como una herramienta de detección para clasificar a las personas en categorías como bajo peso, peso saludable, sobrepeso u obesidad, y así evaluar el riesgo asociado con problemas de salud</div>
-    </div>
-    <div class="col-md-8 text-center">
+        <div class=" text-center order-2 order-md-1">
         <div class="card text-center">
-            <div class="card-header">
-                calculadora IMC:
-            </div>
-            <form method="POST" action="{{ url_for('Resultados') }}">
-                <input type="hidden" name="form_type" value="imc">
-                <div class="mb-3">
-                    <label for="kgIMC" class="form-label">peso(kg)</label>
-                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
-                </div>
-                <div class="mb-3">
-                    <label for="mIMC" class="form-label">estatura(cm)</label>
-                    <input type="number" class="form-control" id="mIMC" name="mIMC" step="any" >
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
+                    <form method="POST" action="{{ url_for('Resultados') }}">
+                        <input type="hidden" name="form_type" value="tmb">
+                        <div class="mb-3">
+                        <div class="container mb-4">
+                            <div class="row align-items-center gx-4">
+                                <div class="col-md-8 order-1">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header d-flex gap-3 align-items-center bg-info">
+                                            <div>
+                                                <div class="fw-bold">Calculadora IMC</div>
+                                                <small class="text-muted">Peso / Estatura</small>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ url_for('Resultados') }}">
+                                                <input type="hidden" name="form_type" value="imc">
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Peso (kg)</label>
+                                                        <input type="number" class="form-control" name="kgIMC" step="any">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Estatura (cm)</label>
+                                                        <input type="number" class="form-control" name="mIMC" step="any">
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 text-end"><button class="btn btn-success">Calcular IMC</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 order-2">
+                                    <div class="card border-0 bg-light shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">¿Qué es el IMC?</h6>
+                                            <p class="small mb-0">El IMC relaciona tu peso con tu estatura y sirve para clasificar categorías como bajo peso, normal, sobrepeso u obesidad.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- TMB -->
+                        <div class="container mb-4">
+                            <div class="row align-items-center gx-4">
+                                <div class="col-md-8 order-1">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header d-flex gap-3 align-items-center bg-info">
+                                            <div>
+                                                <div class="fw-bold">Calculadora TMB</div>
+                                                <small class="text-muted">Tasa metabólica basal</small>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ url_for('Resultados') }}">
+                                                <input type="hidden" name="form_type" value="tmb">
+                                                <div class="row g-3">
+                                                    <div class="col-md-4">
+                                                        <label class="form-label">Sexo</label>
+                                                        <select class="form-select" name="sexo">
+                                                            <option>Masculino</option>
+                                                            <option>Femenino</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="form-label">Peso (kg)</label>
+                                                        <input type="number" class="form-control" name="kg" step="any">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="form-label">Estatura (cm)</label>
+                                                        <input type="number" class="form-control" name="cm" step="any">
+                                                    </div>
+                                                    <div class="col-md-4 mt-2">
+                                                        <label class="form-label">Edad</label>
+                                                        <input type="number" class="form-control" name="edad" step="any">
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 text-end"><button class="btn btn-success">Calcular TMB</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 order-2">
+                                    <div class="card border-0 bg-light shadow-sm ">
+                                        <div class="card-body">
+                                            <h6 class="card-title">¿Qué es TMB?</h6>
+                                            <p class="small mb-0">La Tasa Metabólica Basal es la energía mínima que tu cuerpo necesita en reposo. Se usa para estimar calorías diarias.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- GCT -->
+                        <div class="container mb-4">
+                            <div class="row align-items-center gx-4">
+                                <div class="col-md-8 order-1">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header d-flex gap-3 align-items-center bg-info">
+                                            <div>
+                                                <div class="fw-bold">Calculadora GCT</div>
+                                                <small class="text-muted">Gasto según actividad</small>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ url_for('Resultados') }}">
+                                                <input type="hidden" name="form_type" value="gct">
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">TMB (kcal)</label>
+                                                        <input type="number" class="form-control" name="kgIMC" step="any">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Actividad</label>
+                                                        <select name="actGCT" class="form-select">
+                                                            <option>Sedentario</option>
+                                                            <option>Ligero</option>
+                                                            <option>Moderado</option>
+                                                            <option>Intenso</option>
+                                                            <option>Muy intenso</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 text-end"><button class="btn btn-success">Calcular GCT</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 order-2">
+                                    <div class="card border-0 bg-light shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">¿Qué es GCT?</h6>
+                                            <p class="small mb-0">GCT estima el gasto calórico total según tu nivel de actividad física.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-<div class="row text-center  bg-info">
-    <div class=" col-4 container  bg-info p-4">
-        <div class="overflow-y-scroll"><strong>Que es el TMB?:</strong> <br>El TMB significa Tasa Metabólica Basal, que es la cantidad mínima de energía (calorías) que tu cuerpo necesita para mantener sus funciones vitales en reposo, como respirar, hacer circular la sangre y mantener la temperatura corporal. Representa alrededor del 60% al 70% de la energía que gastas diariamente y varía de persona a persona según factores como la masa muscular, la edad y el sexo</div>
-    </div>
-    <div class="col-md-8 text-center">
-        <div class="card text-center">
-            <div class="card-header">
-                calculadora TMB:
-            </div>
-            <form method="POST" action="{{ url_for('Resultados') }}">
-                <input type="hidden" name="form_type" value="tmb">
-                <div class="mb-3">
-                    <label for="kgTMB" class="form-label">sexo</label>
-                    <select  class="form-label" name="sexo" id="sexoTMB">
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="kgTMB" class="form-label">peso(kg)</label>
-                    <input type="number" class="form-control" id="kgTMB" name="kg" step="any" >
-                </div>
-                <div class="mb-3">
-                    <label for="mIMC" class="form-label">estatura(cm)</label>
-                    <input type="number" class="form-control" id="mTMB" name="cm" step="any" >
-                </div>
-                <div class="mb-3">
-                    <label for="mIMC" class="form-label">edad(años)</label>
-                    <input type="number" class="form-control" id="edadTMB" name="edad" step="any" >
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
+                        <!-- Peso ideal -->
+                        <div class="container mb-4">
+                            <div class="row align-items-center gx-4">
+                                <div class="col-md-8 order-1">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header d-flex gap-3 align-items-center bg-info">
+                                            <div>
+                                                <div class="fw-bold">Peso ideal</div>
+                                                <small class="text-muted">Estimación con IMC 22</small>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ url_for('Resultados') }}">
+                                                <input type="hidden" name="form_type" value="peso_ideal">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Estatura (m)</label>
+                                                    <input type="number" class="form-control" name="mPi" step="any">
+                                                </div>
+                                                <div class="mt-3 text-end"><button class="btn btn-success">Calcular peso ideal</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 order-2">
+                                    <div class="card border-0 bg-light shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Peso ideal</h6>
+                                            <p class="small mb-0">Estimación simple basada en un IMC objetivo (22).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-
-
-
-<div class="row text-center  bg-info">
-    <div class=" col-4 container  bg-secondary">
-        <div class="overflow-y-scroll"><strong>Que es el GCT?:</strong> <br>GCT significa Grasa Corporal Total en el contexto de la nutrición, es una medida que representa la cantidad total de grasa en el cuerpo. Se diferencia del peso corporal total porque incluye la masa grasa, la masa muscular y otros componentes. Esta métrica se utiliza para evaluar la composición corporal, el estado de sobrepeso u obesidad y para entender mejor los riesgos metabólicos. </div>
-    </div>
-    <div class="col-md-8 text-center">
-        <div class="card text-center">
-            <div class="card-header">
-                calculadora GCT:
-            </div>
-            <form method="POST" action="{{ url_for('Resultados') }}">
-                <input type="hidden" name="form_type" value="gct">
-                <div class="mb-3">
-                    <label for="kgIMC" class="form-label">tu TMB</label>
-                    <input type="number" class="form-control" id="kgIMC" name="kgIMC" step="any" >
-                </div>
-                <div class="mb-3">
-                    <label for="mIMC" class="form-label">Actividad fisica</label>
-                    <select name="actGCT" id="actGCT">
-                        <option value="Sedentario">Sedentario</option>
-                        <option value="Ligero">Ligero</option>
-                        <option value="Moderado">Moderado</option>
-                        <option value="Intenso">Intenso</option>
-                        <option value="Muy intenso">Muy intenso/option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="row text-center  bg-info">
-    <div class=" col-4 container  bg-info">
-        <div class="overflow-y-scroll"><strong>Calculadora de Peso Corporal Ideal:</strong> <br>El peso corporal ideal es el peso en el que una persona tiene el menor riesgo de mortalidad y mantiene un buen estado de salud, considerando factores como la altura, composición corporal, edad, sexo y estilo de vida. Se puede calcular una estimación a través del Índice de Masa Corporal (IMC), que relaciona el peso y la estatura, pero es importante recordar que es una guía general y cada persona es única, con un peso ideal personalizado. </div>
-    </div>
-    <div class="col-md-8 text-center">
-        <div class="card text-center">
-            <div class="card-header">
-                peso ideal:
-            </div>
-            <form method="POST" action="{{ url_for('Resultados') }}">
-                <input type="hidden" name="form_type" value="peso_ideal">
-                <div class="mb-3">
-                    <label for="mIMC" class="form-label">estatura(m)</label>
-                    <input type="number" class="form-control" id="mPi" name="mPi" step="any" >
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="row text-center  bg-info">
-    <div class=" col-4 container  bg-secondary">
-        <div class="overflow-y-scroll"><strong>Calculadora de Macronutrientes:</strong> <br>Los macronutrientes son nutrientes que el cuerpo necesita en grandes cantidades para proporcionar energía, construir y reparar tejidos, y regular procesos metabólicos. Los tres macronutrientes principales son los carbohidratos, las proteínas y las grasas (o lípidos). Cada uno cumple funciones esenciales y se encuentra en diferentes tipos de alimentos </div>
-    </div>
-    <div class="col-md-8 text-center">
-        <div class="card text-center">
-            <div class="card-header">
-                macronutrientes:
-            </div>
-            <form method="POST" action="{{ url_for('Resultados') }}">
-                <input type="hidden" name="form_type" value="macros">
-                <div class="mb-3">
-                    <label for="tmb_macros" class="form-label">Calorías (TMB o mantenimiento)</label>
-                    <input type="number" class="form-control" id="tmb_macros" name="tmb_kcal" step="any" >
-                </div>
-                <div class="mb-3">
-                    <label for="macro_goal" class="form-label">objetivo</label>
-                    <select name="macro_goal" id="macro_goal"> 
-                        <option value="mantener peso">mantener peso</option>
-                        <option value="perder peso">perder peso</option>
-                        <option value="ganar musculo">ganar musculo</option>
-                    </select>
-                
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
+                        <!-- Macronutrientes -->
+                        <div class="container mb-4">
+                            <div class="row align-items-center gx-4">
+                                <div class="col-md-8 order-1">
+                                    <div class="card shadow-sm">
+                                        <div class="card-header d-flex gap-3 align-items-center bg-info">
+                                            <div>
+                                                <div class="fw-bold">Macronutrientes</div>
+                                                <small class="text-muted">Recomendación por calorías</small>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="{{ url_for('Resultados') }}">
+                                                <input type="hidden" name="form_type" value="macros">
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Calorías (kcal)</label>
+                                                        <input type="number" class="form-control" name="tmb_kcal" step="any">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Objetivo</label>
+                                                        <select name="macro_goal" class="form-select">
+                                                            <option value="mantener peso">mantener peso</option>
+                                                            <option value="perder peso">perder peso</option>
+                                                            <option value="ganar musculo">ganar musculo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3 text-end"><button class="btn btn-success">Calcular macros</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 order-2">
+                                    <div class="card border-0 bg-light shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Macronutrientes</h6>
+                                            <p class="small mb-0">Divide tus calorías objetivo en carbohidratos, proteínas y grasas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 {% endblock %}

@@ -7,53 +7,54 @@
                         {% if form_type == 'imc' %}Resultados IMC{% elif form_type == 'tmb' %}Resultados TMB{% elif form_type == 'gct' %}Resultados GCT{% elif form_type == 'peso_ideal' %}Peso ideal{% elif form_type == 'macros' %}Macronutrientes{% else %}Resultados{% endif %}
                 </div>
                                 <div class="card-body">
-                                        {% if form_type == 'imc' and imc is defined %}
-                                                <h5 class="card-title">Tu IMC es: <br>{{ imc }}</h5>
-                                                <p class="card-text">{{ categoria or '' }}</p>
-                                                {% if peso_ideal is defined %}
-                                                        <p class="card-text">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
-                                                {% endif %}
+                                                {% if form_type == 'imc' and imc is defined %}
+                                                        <h3 class="display-6 mb-2">{{ imc }}</h3>
+                                                        <div class="mb-2"><span class="badge bg-info text-dark">{{ categoria or '' }}</span></div>
+                                                        {% if peso_ideal is defined %}
+                                                                <p class="lead">Peso ideal (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
+                                                        {% endif %}
 
                                         {% elif form_type == 'tmb' and tmb is defined %}
-                                                <h5 class="card-title">Tu TMB es: <br>{{ tmb }} calorías/día</h5>
+                                                <h3 class="display-6 mb-2">{{ tmb }} <small class="text-muted">kcal/día</small></h3>
                                                 {% if peso_ideal is defined %}
                                                         <p class="card-text">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></p>
                                                 {% endif %}
                                                 {% if mantenimiento is defined %}
-                                                        <p class="card-text">Calorías mantenimiento (estimadas): <strong>{{ mantenimiento }} kcal/día</strong></p>
-                                                        <p class="card-text small">Distribución ejemplo (50% carbohidratos / 20% proteínas / 30% grasas):</p>
-                                                        <ul class="list-unstyled small">
-                                                                <li>Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
-                                                                <li>Proteínas: <strong>{{ protein_g }} g</strong> (recom: {{ protein_per_kg }} g)</li>
-                                                                <li>Grasas: <strong>{{ fat_g }} g</strong></li>
-                                                        </ul>
+                                                        <p class="lead">Mantenimiento: <strong>{{ mantenimiento }} kcal/día</strong></p>
                                                 {% endif %}
 
                                         {% elif form_type == 'gct' and gct is defined %}
-                                                <h5 class="card-title">Gasto según actividad (GCT): <br>{{ gct }} kcal/día</h5>
+                                                <h3 class="display-6 mb-2">{{ gct }} <small class="text-muted">kcal/día</small></h3>
                                                 {% if base_tmb is defined %}
                                                         <p class="card-text">TMB base usada: <strong>{{ base_tmb }} kcal/día</strong></p>
                                                 {% endif %}
                                                 {% if carbs_g is defined %}
-                                                        <p class="card-text small">Distribución ejemplo (50% carbohidratos / 20% proteínas / 30% grasas):</p>
+                                                        {% if carbs_g is defined %}
+                                                        <p class="small text-muted">(Distribución ejemplo: 50% HC / 20% P / 30% G)</p>
                                                         <ul class="list-unstyled small">
                                                                 <li>Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
                                                                 <li>Proteínas: <strong>{{ protein_g }} g</strong></li>
                                                                 <li>Grasas: <strong>{{ fat_g }} g</strong></li>
                                                         </ul>
+                                                        {% endif %}
                                                 {% endif %}
 
                                         {% elif form_type == 'peso_ideal' and peso_ideal is defined %}
-                                                <h5 class="card-title">Peso ideal estimado (IMC 22): <strong>{{ peso_ideal }} kg</strong></h5>
+                                                <h3 class="display-6 mb-2">{{ peso_ideal }} kg</h3>
+                                                <p class="text-muted">Estimación de peso ideal usando IMC objetivo 22.</p>
 
                                         {% elif form_type == 'macros' and kcal is defined %}
-                                                <h5 class="card-title">Distribución de macronutrientes — {{ macro_goal or 'Objetivo' }}</h5>
-                                                <p class="card-text">Calorías objetivo: <strong>{{ kcal }} kcal</strong></p>
-                                                <ul class="list-unstyled small">
-                                                        <li>Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
-                                                        <li>Proteínas: <strong>{{ protein_g }} g</strong></li>
-                                                        <li>Grasas: <strong>{{ fat_g }} g</strong></li>
-                                                </ul>
+                                                                                                                                                                                                <h4 class="mb-2">{{ macro_goal | default('Objetivo') }}</h4>
+                                                                                                                                                                                                <p class="lead">{{ kcal }} kcal</p>
+                                                                                                                                                                                                <div class="row justify-content-center">
+                                                                                                                                                                                                        <div class="col-md-8">
+                                                                                                                                                                                                                <ul class="list-group list-group-flush text-start">
+                                                                                                                                                                                                                        <li class="list-group-item">Carbohidratos: <strong>{{ carbs_g }} g</strong></li>
+                                                                                                                                                                                                                        <li class="list-group-item">Proteínas: <strong>{{ protein_g }} g</strong></li>
+                                                                                                                                                                                                                        <li class="list-group-item">Grasas: <strong>{{ fat_g }} g</strong></li>
+                                                                                                                                                                                                                </ul>
+                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                </div>
 
                                         {% else %}
                                                 <h5 class="card-title">No hay resultados para mostrar</h5>
