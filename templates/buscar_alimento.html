@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block contenido  %}
+
+
+
+    <div class="container mt-4">
+        <div class="mb-4">
+            <h2>Buscar Información Nutricional</h2>
+            <p class="text-muted">Busca alimentos para ver su información nutricional.</p>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('buscar_alimento') }}">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del alimento:</label>
+                        <input type="text" class="form-control" name="alimento" 
+                               value="{{ query_busqueda }}" placeholder="Ej: manzana, yogurt, pan integral..." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
+                
+                <div class="mt-3">
+                    <p class="text-muted mb-1">Ejemplos para probar:</p>
+                    <div>
+                        <span class="badge bg-secondary me-1">Coca Cola</span>
+                        <span class="badge bg-secondary me-1">Nutella</span>
+                        <span class="badge bg-secondary me-1">Yogurt</span>
+                        <span class="badge bg-secondary me-1">Pan integral</span>
+                        <span class="badge bg-secondary me-1">Huevo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if resultado %}
+            {% if resultado.error %}
+                <div class="alert alert-warning">
+                    <strong>{{ resultado.error }}</strong>
+                </div>
+            {% else %}
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0">{{ resultado.nombre }}</h5>
+                                <small>Marca: {{ resultado.marca }}</small>
+                            </div>
+                            <div>
+                                <span class="badge bg-light text-dark">Por 100g</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        {% if resultado.imagen %}
+                            <div class="text-center mb-4">
+                                <img src="{{ resultado.imagen }}" class="img-fluid rounded" style="max-height: 150px;" alt="{{ resultado.nombre }}">
+                            </div>
+                        {% endif %}
+                        
+                        <h6 class="border-bottom pb-2 mb-3">Información Nutricional:</h6>
+                        
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <div class="alert alert-info">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><strong>Calorías:</strong></span>
+                                        <span class="fs-5">
+                                            {% if resultado.nutrientes.calorias %}
+                                                {{ resultado.nutrientes.calorias|round(1) }} kcal
+                                            {% else %}
+                                                No disponible
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-primary">Proteínas</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Cantidad:</span>
+                                            <span class="fw-bold">
+                                                {% if resultado.nutrientes.proteinas %}
+                                                    {{ resultado.nutrientes.proteinas|round(1) }} g
+                                                {% else %}
+                                                    N/D
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-warning">Grasas</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Cantidad:</span>
+                                            <span class="fw-bold">
+                                                {% if resultado.nutrientes.grasas %}
+                                                    {{ resultado.nutrientes.grasas|round(1) }} g
+                                                {% else %}
+                                                    N/D
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-success">Carbohidratos</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Cantidad:</span>
+                                            <span class="fw-bold">
+                                                {% if resultado.nutrientes.carbohidratos %}
+                                                    {{ resultado.nutrientes.carbohidratos|round(1) }} g
+                                                {% else %}
+                                                    N/D
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-danger">Azúcares</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Cantidad:</span>
+                                            <span class="fw-bold">
+                                                {% if resultado.nutrientes.azucares %}
+                                                    {{ resultado.nutrientes.azucares|round(1) }} g
+                                                {% else %}
+                                                    N/D
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h6 class="mb-3">Otros nutrientes:</h6>
+                            <div class="list-group">
+                                <div class="list-group-item d-flex justify-content-between">
+                                    <span>Fibra:</span>
+                                    <span>
+                                        {% if resultado.nutrientes.fibra %}
+                                            {{ resultado.nutrientes.fibra|round(1) }} g
+                                        {% else %}
+                                            N/D
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between">
+                                    <span>Sal:</span>
+                                    <span>
+                                        {% if resultado.nutrientes.sal %}
+                                            {{ resultado.nutrientes.sal|round(2) }} g
+                                        {% else %}
+                                            N/D
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-secondary">
+                            <small>
+                                <strong>Nota:</strong> Los datos provienen de Open Food Facts, una base de datos pública. 
+                                La información puede variar según la marca y el lote.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% elif query_busqueda %}
+            <div class="alert alert-info">
+                <p class="mb-0">
+                    <strong>Escribe un alimento arriba y presiona "Buscar" para ver su información nutricional.</strong>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
