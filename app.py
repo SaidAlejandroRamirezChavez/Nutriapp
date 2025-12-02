@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-# Load local secrets from secrets.json (keeps configuration out of source code)
+
 def _load_secrets(path='secrets.json'):
     try:
         with open(path, 'r', encoding='utf-8') as fh:
@@ -16,7 +16,6 @@ def _load_secrets(path='secrets.json'):
         return {}
 
 _SECRETS = _load_secrets()
-# Ensure a secret key is set so Flask sessions work
 app.secret_key = _SECRETS.get('FLASK_SECRET', 'dev-secret')
 
 @app.route("/")
@@ -225,19 +224,17 @@ def Resultados():
                 error_message = "Valores inválidos para GCT."
                 return render_template("Herramientas.html", error=error_message)
 
-        # peso ideal form
         if form_type == 'peso_ideal':
             m_pi = form.get('mPi')
             try:
                 altura_m = float(m_pi)
-                if altura_m > 10:  # si se envió en cm
+                if altura_m > 10:  
                     altura_m = altura_m / 100.0
                 peso_ideal = round(22 * (altura_m ** 2), 1)
                 return render_template('Resultados.html', form_type='peso_ideal', peso_ideal=peso_ideal)
             except Exception:
                 return render_template('Herramientas.html', error='Altura inválida para calcular peso ideal.')
 
-        # macros form
         if form_type == 'macros':
             tmb_kcal = form.get('tmb_kcal') or form.get('kgIMC')
             goal = form.get('macro_goal') or ''
