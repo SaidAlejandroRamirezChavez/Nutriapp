@@ -13,8 +13,7 @@
    -Dylan Kareem Almanza Garcia 3-D
    
 <img width="200" height="202" alt="dylan" src="https://github.com/user-attachments/assets/78bfa0ee-13c5-40d1-8857-b4c537a8600c" />
-
-
+.
 <img width="250" height="633" alt="image" src="https://github.com/user-attachments/assets/78767383-a331-4f88-bec5-792500565615" />
 
 ## Proposito:
